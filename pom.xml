@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.lwerl</groupId>
@@ -16,6 +17,10 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!--Logging-->
+        <logbasck.version>1.1.3</logbasck.version>
+        <slf4j.version>1.7.22</slf4j.version>
     </properties>
 
     <build>
@@ -35,11 +40,40 @@
     </build>
 
     <dependencies>
+        <!--Logging-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId> <!--Сам логгер logback-->
+            <version>${logbasck.version}</version>
+            <scope>runtime</scope><!--включается при сборке проекта, но не используется при компиляции-->
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId> <!--API обертки логгеров slf4j-->
+            <version>${slf4j.version}</version>
+            <scope>compile</scope><!--включается при сборке проекта и используется при компиляции-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId> <!--Java Common Logging редирект-->
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope><!--включается при сборке проекта, но не используется при компиляции-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId> <!--Java Util Logging редирект-->
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope><!--включается при сборке проекта, но не используется при компиляции-->
+        </dependency>
+
         <!--WEB-->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <artifactId>javax.servlet-api</artifactId> <!--JavaEE servlet API-->
             <version>3.1.0</version>
+            <scope>provided</scope><!--не включается при сборке проекта, используется для решения зависимостей-->
         </dependency>
     </dependencies>
 
