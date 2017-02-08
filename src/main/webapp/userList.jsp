@@ -1,16 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lWeRl
-  Date: 08.02.2017
-  Time: 13:37
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>User list</title>
   </head>
   <body>
-  $END$
+  <h2>User list</h2>
   </body>
 </html>
