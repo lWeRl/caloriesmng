@@ -7,7 +7,7 @@
     <groupId>org.lwerl</groupId>
     <artifactId>caloriesmng</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>Calories Management</name>
     <url></url>
