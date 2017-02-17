@@ -1,10 +1,11 @@
 package org.lwerl.caloriesmng.web.user;
 
 import org.lwerl.caloriesmng.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-/**
- * Created by lWeRl on 17.02.2017.
- */
+@Controller
 public class AdminRestImpl implements AdminRest {
+    @Autowired
     private UserService service;
 }

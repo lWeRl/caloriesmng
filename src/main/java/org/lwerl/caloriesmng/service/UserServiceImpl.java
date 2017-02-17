@@ -3,18 +3,15 @@ package org.lwerl.caloriesmng.service;
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.repository.UserRepository;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by lWeRl on 17.02.2017.
- */
+@Service
 public class UserServiceImpl implements UserService {
+    @Autowired
     private UserRepository repository;
-
-    public UserServiceImpl(UserRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public User save(User user) {
@@ -49,4 +46,8 @@ public class UserServiceImpl implements UserService {
     public User update(User user) throws NotFoundException {
         return null;
     }
+
+//    public void setRepository(UserRepository repository) {
+//        this.repository = repository;
+//    }
 }
