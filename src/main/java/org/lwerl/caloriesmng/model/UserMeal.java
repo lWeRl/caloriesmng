@@ -1,17 +1,19 @@
 package org.lwerl.caloriesmng.model;
 
-import java.util.Date;
+import org.lwerl.caloriesmng.util.TimeUtil;
+
+import java.time.LocalDateTime;
 
 public class UserMeal extends BaseEntity {
     private String description;
-    private Date date;
+    private LocalDateTime date;
     private int calories;
     private User user;
 
     public UserMeal() {
     }
 
-    public UserMeal(String description, Date date, int calories) {
+    public UserMeal(String description, LocalDateTime date, int calories) {
         this.description = description;
         this.date = date;
         this.calories = calories;
@@ -25,12 +27,20 @@ public class UserMeal extends BaseEntity {
         this.description = description;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getCalories() {
@@ -39,5 +49,14 @@ public class UserMeal extends BaseEntity {
 
     public void setCalories(int calories) {
         this.calories = calories;
+    }
+
+    @Override
+    public String toString() {
+        return "Meal: " +
+                "id=" + id + " " +
+                TimeUtil.toString(date) + " '" +
+                description + "' " +
+                "calories=" + calories;
     }
 }

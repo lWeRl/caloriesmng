@@ -2,15 +2,15 @@ package org.lwerl.caloriesmng.service;
 
 import org.lwerl.caloriesmng.model.UserMeal;
 import org.lwerl.caloriesmng.repository.UserMealRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Service
+//@Service
 public class UserMealServiceImpl implements UserMealService {
-    @Autowired
+//    @Autowired
     private UserMealRepository repository;
 
     public void setRepository(UserMealRepository repository) {
