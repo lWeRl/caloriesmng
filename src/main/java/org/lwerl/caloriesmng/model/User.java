@@ -2,9 +2,6 @@ package org.lwerl.caloriesmng.model;
 
 import java.util.*;
 
-/**
- * Created by lWeRl on 17.02.2017.
- */
 public class User extends NamedEntity {
     private String email;
     private String password;

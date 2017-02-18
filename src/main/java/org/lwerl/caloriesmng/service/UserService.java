@@ -5,9 +5,6 @@ import org.lwerl.caloriesmng.util.exception.NotFoundException;
 
 import java.util.List;
 
-/**
- * Created by lWeRl on 17.02.2017.
- */
 public interface UserService {
     User save(User user);
 

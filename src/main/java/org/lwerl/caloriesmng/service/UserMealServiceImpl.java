@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * Created by lWeRl on 17.02.2017.
- */
 @Service
 public class UserMealServiceImpl implements UserMealService {
     @Autowired

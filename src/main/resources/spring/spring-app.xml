@@ -3,12 +3,31 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <!--<bean id="mockUserRepository" class="org.lwerl.caloriesmng.repository.mock.MockUserRepository"/>-->
-    <!--<bean id="userService" class="org.lwerl.caloriesmng.service.UserServiceImpl">-->
-        <!--<property name="repository" ref="mockUserRepository"></property>-->
-    <!--</bean>-->
-    <context:annotation-config/>
-    <context:component-scan base-package="org.lwerl.caloriesmng.repository"/>
-    <context:component-scan base-package="org.lwerl.caloriesmng.service"/>
-    <context:component-scan base-package="org.lwerl.caloriesmng.web"/>
+
+    <!--настройка бинов напрямую-->
+    <bean id="mockUserRepository" class="org.lwerl.caloriesmng.repository.mock.MockUserRepository"/>
+    <bean id="mockUserMealRepository" class="org.lwerl.caloriesmng.repository.mock.MockUserMealRepository"/>
+
+    <bean id="userService" class="org.lwerl.caloriesmng.service.UserServiceImpl">
+        <property name="repository" ref="mockUserRepository"/>
+    </bean>
+    <bean id="userMealService" class="org.lwerl.caloriesmng.service.UserMealServiceImpl">
+        <property name="repository" ref="mockUserMealRepository"/>
+    </bean>
+
+    <bean id="userRest" class="org.lwerl.caloriesmng.web.user.UserRestImpl">
+        <property name="service" ref="userService"/>
+    </bean>
+    <bean id="adminRest" class="org.lwerl.caloriesmng.web.user.AdminRestImpl">
+        <property name="service" ref="userService"/>
+    </bean>
+    <bean id="mealRest" class="org.lwerl.caloriesmng.web.meal.MealRestImpl">
+        <property name="service" ref="userMealService"/>
+    </bean>
+
+    <!--Подключаем аннотации-->
+    <!--<context:annotation-config/>-->
+    <!--<context:component-scan base-package="org.lwerl.caloriesmng.repository"/>-->
+    <!--<context:component-scan base-package="org.lwerl.caloriesmng.service"/>-->
+    <!--<context:component-scan base-package="org.lwerl.caloriesmng.web"/>-->
 </beans>

@@ -8,4 +8,8 @@ import org.springframework.stereotype.Controller;
 public class AdminRestImpl implements AdminRest {
     @Autowired
     private UserService service;
+
+    public void setService(UserService service) {
+        this.service = service;
+    }
 }
