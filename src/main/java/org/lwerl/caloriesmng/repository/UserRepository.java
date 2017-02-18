@@ -4,9 +4,7 @@ import org.lwerl.caloriesmng.model.User;
 
 import java.util.List;
 
-/**
- * Created by lWeRl on 17.02.2017.
- */
+
 public interface UserRepository {
     User save(User user);
 

@@ -16,6 +16,10 @@ public class UserMealServiceImpl implements UserMealService {
     @Autowired
     UserMealRepository repository;
 
+    public void setRepository(UserMealRepository repository) {
+        this.repository = repository;
+    }
+
     @Override
     public UserMeal get(int id, int userId) {
         return null;

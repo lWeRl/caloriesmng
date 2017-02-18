@@ -1,6 +1,6 @@
 package org.lwerl.caloriesmng.repository.mock;
 
-import org.lwerl.caloriesmng.LoggerWrapper;
+import org.lwerl.caloriesmng.util.exception.LoggerWrapper;
 import org.lwerl.caloriesmng.model.UserMeal;
 import org.lwerl.caloriesmng.repository.UserMealRepository;
 import org.springframework.stereotype.Repository;
@@ -8,9 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * Created by lWeRl on 17.02.2017.
- */
 @Repository
 public class MockUserMealRepository implements UserMealRepository {
     private static final LoggerWrapper LOG = LoggerWrapper.get(MockUserMealRepository.class);

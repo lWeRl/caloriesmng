@@ -5,9 +5,6 @@ import org.lwerl.caloriesmng.model.UserMeal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * Created by lWeRl on 17.02.2017.
- */
 public interface UserMealRepository {
     // UserMeal.user = null
     UserMeal save(UserMeal userMeal, int userId);
