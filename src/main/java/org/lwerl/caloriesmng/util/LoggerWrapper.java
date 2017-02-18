@@ -1,4 +1,4 @@
-package org.lwerl.caloriesmng.util.exception;
+package org.lwerl.caloriesmng.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package org.lwerl.caloriesmng.repository.mock;
 
-import org.lwerl.caloriesmng.util.exception.LoggerWrapper;
+import org.lwerl.caloriesmng.util.LoggerWrapper;
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.repository.UserRepository;
 import org.springframework.stereotype.Repository;

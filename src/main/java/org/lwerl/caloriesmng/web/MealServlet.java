@@ -1,6 +1,6 @@
 package org.lwerl.caloriesmng.web;
 
-import org.lwerl.caloriesmng.util.exception.LoggerWrapper;
+import org.lwerl.caloriesmng.util.LoggerWrapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
