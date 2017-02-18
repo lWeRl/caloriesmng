@@ -22,6 +22,7 @@
         <logbasck.version>1.1.3</logbasck.version>
         <slf4j.version>1.7.22</slf4j.version>
         <spring.version>4.3.6.RELEASE</spring.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
     <build>
@@ -73,6 +74,14 @@
             <artifactId>jul-to-slf4j</artifactId> <!--Java Util Logging редирект-->
             <version>${slf4j.version}</version>
             <scope>runtime</scope><!--включается при сборке проекта, но не используется при компиляции-->
+        </dependency>
+
+        <!--JUnit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!--WEB-->

@@ -12,7 +12,7 @@ public interface UserRepository {
 
     User get(int id); //null if none
 
-    User getByEMail(String email); //null if none
+    User getByEmail(String email); //null if none
 
     List<User> getAll();
 }

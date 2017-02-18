@@ -4,6 +4,7 @@ import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.repository.UserRepository;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
-
+    //@Required
     public void setRepository(UserRepository repository) {
         this.repository = repository;
     }
@@ -36,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByEmail(String email) throws NotFoundException {
-        User user = repository.getByEMail(email);
+        User user = repository.getByEmail(email);
         if (user == null) throw new NotFoundException("");
         return user;
     }

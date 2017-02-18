@@ -4,19 +4,26 @@ import org.lwerl.caloriesmng.dto.LoggedUser;
 import org.lwerl.caloriesmng.model.UserMeal;
 import org.lwerl.caloriesmng.service.UserMealService;
 import org.lwerl.caloriesmng.util.LoggerWrapper;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Required;
+import org.springframework.stereotype.Controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-//@Controller
+@Controller
 public class MealRestImpl implements MealRest {
     private static final LoggerWrapper LOG = LoggerWrapper.get(MealRestImpl.class);
     //не имеет перменных, то есть не имеет состояния - ThreadSafe
-//    @Autowired
+
     private UserMealService service;
 
+    @Autowired
+    private MealRestImpl(UserMealService service) {
+        this.service = service;
+    }
+
+    //@Required
     public void setService(UserMealService service) {
         this.service = service;
     }
