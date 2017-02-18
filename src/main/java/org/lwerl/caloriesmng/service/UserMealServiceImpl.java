@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class UserMealServiceImpl implements UserMealService {
     @Autowired
-    UserMealRepository repository;
+    private UserMealRepository repository;
 
     public void setRepository(UserMealRepository repository) {
         this.repository = repository;
@@ -19,36 +19,36 @@ public class UserMealServiceImpl implements UserMealService {
 
     @Override
     public UserMeal get(int id, int userId) {
-        return null;
+        return repository.get(id, userId);
     }
 
     @Override
     public void delete(int id, int userId) {
-
+        repository.delete(id, userId);
     }
 
     @Override
     public List<UserMeal> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId) {
-        return null;
+        return repository.getBetween(startDate, endDate, userId);
     }
 
     @Override
     public List<UserMeal> getAll(int userId) {
-        return null;
+        return repository.getAll(userId);
     }
 
     @Override
     public void deleteAll(int userId) {
-
+        repository.deleteAll(userId);
     }
 
     @Override
     public UserMeal update(UserMeal meal, int userId) {
-        return null;
+        return repository.save(meal, userId);
     }
 
     @Override
     public UserMeal save(UserMeal meal, int userId) {
-        return null;
+        return repository.save(meal, userId);
     }
 }
