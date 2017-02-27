@@ -3,23 +3,17 @@ package org.lwerl.caloriesmng.service;
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.repository.UserRepository;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import java.util.List;
-
-//import org.springframework.beans.factory.annotation.Required;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Resource
     private UserRepository repository;
-
-    public void setRepository(UserRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public User save(User user) {
@@ -40,9 +34,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByEmail(String email) throws NotFoundException {
-        User user = repository.getByEmail(email);
-        if (user == null) throw new NotFoundException("");
-        return user;
+        try {
+            return repository.getByEmail(email);
+        } catch (Exception e) {
+            throw new NotFoundException("");
+        }
     }
 
     @Override
@@ -52,6 +48,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(User user) throws NotFoundException {
-        return repository.save(user);
+        try {
+            return repository.save(user);
+        } catch (Exception e) {
+            throw new NotFoundException("");
+        }
     }
 }

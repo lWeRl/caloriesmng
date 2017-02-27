@@ -2,6 +2,7 @@ package org.lwerl.caloriesmng.repository.jpa;
 
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.repository.UserRepository;
+import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@Transactional(readOnly = true)
 public class JpaUserRepository implements UserRepository {
 
     /*
@@ -32,9 +34,12 @@ public class JpaUserRepository implements UserRepository {
 
     @Transactional
     @Override
-    public User save(User user) {
+    public User save(User user) throws NotFoundException {
         if (user.isNew()) entityManager.persist(user);
-        else entityManager.merge(user);
+        else {
+            entityManager.getReference(User.class, user.getId());
+            entityManager.merge(user);
+        }
         return user;
     }
 
@@ -54,7 +59,7 @@ public class JpaUserRepository implements UserRepository {
 
     @Override
     public User getByEmail(String email) {
-        return entityManager.createNamedQuery(User.BY_EMAIL, User.class).setParameter("email",email).getSingleResult();
+        return entityManager.createNamedQuery(User.BY_EMAIL, User.class).setParameter("email", email).getSingleResult();
     }
 
 

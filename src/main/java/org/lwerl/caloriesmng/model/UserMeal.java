@@ -6,18 +6,35 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+@NamedQueries({
+        @NamedQuery(name = UserMeal.GET, query = "SELECT m FROM UserMeal m WHERE m.id=:id AND m.user.id=:userId"),
+        @NamedQuery(name = UserMeal.ALL_SORTED, query = "SELECT m FROM UserMeal m WHERE m.user.id=:userId ORDER BY m.date DESC"),
+        @NamedQuery(name = UserMeal.DELETE, query = "DELETE FROM UserMeal m WHERE m.id=:id AND m.user.id=:userId"),
+        @NamedQuery(name = UserMeal.DELETE_ALL, query = "DELETE FROM UserMeal m WHERE m.user.id=:userId"),
+        @NamedQuery(name =UserMeal.GET_BETWEEN, query = "SELECT m FROM UserMeal m WHERE m.user.id=:userId AND m.date>=:startDate and m.date<:endDate ORDER BY m.date DESC"),
+//        @NamedQuery(name = UserMeal.UPDATE, query = "UPDATE UserMeal m SET m.date = :date, m.calories= :calories, m.description=:desc WHERE m.id=:id AND m.user.id=:userId")
+})
+
 @Entity
 @Table(name = "MEALS")
 public class UserMeal extends BaseEntity {
-    @Column(name="description", nullable = false)
+    public static final String GET = "UserMeal.get";
+    public static final String ALL_SORTED = "UserMeal.getAll";
+    public static final String DELETE = "UserMeal.delete";
+    public static final String DELETE_ALL = "UserMeal.deleteAll";
+    public static final String GET_BETWEEN = "UserMeal.getBetween";
+//    public static final String UPDATE = "UserMeal.update";
+
+
+    @Column(name = "description", nullable = false)
     private String description;
-    @Column(name="date", nullable = false)
+    @Column(name = "date", nullable = false)
     @NotNull
     private LocalDateTime date;
-    @Column(name="calories", nullable = false)
+    @Column(name = "calories", nullable = false)
     private int calories;
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public UserMeal() {

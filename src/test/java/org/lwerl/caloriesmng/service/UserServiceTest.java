@@ -33,21 +33,14 @@ public class UserServiceTest {
     }
 
     @Test
-    public void save() throws Exception {
-        User user = service.save(new User("Test", "test", "test", Role.USER));
-        Assert.assertTrue(user.equals(service.get(100007)));
-    }
-
-    @Test(expected = NotFoundException.class)
-    public void delete() throws Exception {
-        service.delete(100000);
-        Assert.assertTrue(service.get(100000) == null);
-    }
-
-    @Test
     public void get() throws Exception {
         User user = service.get(100000);
         Assert.assertTrue(user.equals(UserTestData.USER));
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void getException() throws Exception {
+        User user = service.get(99999);
     }
 
     @Test
@@ -56,15 +49,42 @@ public class UserServiceTest {
         Assert.assertTrue(user.equals(UserTestData.USER));
     }
 
+    @Test(expected = NotFoundException.class)
+    public void getByEmailException() throws Exception {
+        User user = service.getByEmail("null@null.ru");
+    }
+
     @Test
     public void getAll() throws Exception {
         Object[] test = {UserTestData.ADMIN, UserTestData.USER};
         Assert.assertArrayEquals(service.getAll().toArray(), test);
     }
 
+    @Test(expected = NotFoundException.class)
+    public void delete() throws Exception {
+        service.delete(100000);
+        service.get(100000);
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void deleteException() throws Exception {
+        service.delete(99999);
+    }
+
+    @Test
+    public void save() throws Exception {
+        User user = service.save(new User("Test", "test", "test", Role.USER));
+        Assert.assertTrue(user.equals(service.get(100007)));
+    }
+
     @Test
     public void update() throws Exception {
         User user = service.update((new User(100000, "Test", "test", "test", Role.USER)));
         Assert.assertTrue(user.equals(service.getByEmail("test")));
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void updateException()  throws Exception {
+       service.update((new User(99999, "Test", "test", "test", Role.USER)));
     }
 }
