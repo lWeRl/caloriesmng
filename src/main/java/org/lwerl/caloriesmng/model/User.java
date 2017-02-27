@@ -1,5 +1,8 @@
 package org.lwerl.caloriesmng.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.*;
@@ -20,6 +23,8 @@ public class User extends NamedEntity {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
+    @NotEmpty
+    @Length(min = 5)
     @Column(name = "password", nullable = false)
     private String password;
 

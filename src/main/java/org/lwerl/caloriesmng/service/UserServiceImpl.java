@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 //import org.springframework.beans.factory.annotation.Required;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Resource
     private UserRepository repository;
 
-    //@Required
     public void setRepository(UserRepository repository) {
         this.repository = repository;
     }
@@ -52,6 +52,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(User user) throws NotFoundException {
-        return null;
+        return repository.save(user);
     }
 }

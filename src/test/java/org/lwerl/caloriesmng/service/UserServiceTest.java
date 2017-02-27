@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 import org.lwerl.caloriesmng.UserTestData;
 import org.lwerl.caloriesmng.model.Role;
 import org.lwerl.caloriesmng.model.User;
-import org.lwerl.caloriesmng.repository.UserRepository;
 import org.lwerl.caloriesmng.util.DBPopulator;
+import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,7 +25,7 @@ public class UserServiceTest {
     @Autowired
     DBPopulator populator;
     @Resource
-    UserRepository repository;
+    UserService service;
 
     @Before
     public void setUp() {
@@ -34,36 +34,37 @@ public class UserServiceTest {
 
     @Test
     public void save() throws Exception {
-        User user = repository.save(new User("Test", "test", "test", Role.USER));
-        Assert.assertTrue(user.equals(repository.get(100007)));
+        User user = service.save(new User("Test", "test", "test", Role.USER));
+        Assert.assertTrue(user.equals(service.get(100007)));
     }
 
-    @Test
+    @Test(expected = NotFoundException.class)
     public void delete() throws Exception {
-        Assert.assertTrue(repository.delete(100000));
+        service.delete(100000);
+        Assert.assertTrue(service.get(100000) == null);
     }
 
     @Test
     public void get() throws Exception {
-        User user = repository.get(100000);
+        User user = service.get(100000);
         Assert.assertTrue(user.equals(UserTestData.USER));
     }
 
     @Test
     public void getByEmail() throws Exception {
-        User user = repository.getByEmail("user@test.ru");
+        User user = service.getByEmail("user@test.ru");
         Assert.assertTrue(user.equals(UserTestData.USER));
     }
 
     @Test
     public void getAll() throws Exception {
         Object[] test = {UserTestData.ADMIN, UserTestData.USER};
-        Assert.assertArrayEquals(repository.getAll().toArray(), test);
+        Assert.assertArrayEquals(service.getAll().toArray(), test);
     }
 
     @Test
     public void update() throws Exception {
-        User user = repository.save((new User(100000, "Test", "test", "test", Role.USER)));
-        Assert.assertTrue(user.equals(repository.getByEmail("test")));
+        User user = service.update((new User(100000, "Test", "test", "test", Role.USER)));
+        Assert.assertTrue(user.equals(service.getByEmail("test")));
     }
 }
