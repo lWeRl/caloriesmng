@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
         @NamedQuery(name = UserMeal.ALL_SORTED, query = "SELECT m FROM UserMeal m WHERE m.user.id=:userId ORDER BY m.date DESC"),
         @NamedQuery(name = UserMeal.DELETE, query = "DELETE FROM UserMeal m WHERE m.id=:id AND m.user.id=:userId"),
         @NamedQuery(name = UserMeal.DELETE_ALL, query = "DELETE FROM UserMeal m WHERE m.user.id=:userId"),
-        @NamedQuery(name =UserMeal.GET_BETWEEN, query = "SELECT m FROM UserMeal m WHERE m.user.id=:userId AND m.date>=:startDate and m.date<:endDate ORDER BY m.date DESC"),
+        @NamedQuery(name = UserMeal.GET_BETWEEN, query = "SELECT m FROM UserMeal m WHERE m.user.id=:userId AND m.date>=:startDate and m.date<:endDate ORDER BY m.date DESC"),
 //        @NamedQuery(name = UserMeal.UPDATE, query = "UPDATE UserMeal m SET m.date = :date, m.calories= :calories, m.description=:desc WHERE m.id=:id AND m.user.id=:userId")
 })
 
@@ -42,6 +42,12 @@ public class UserMeal extends BaseEntity {
 
     public UserMeal(Integer id, String description, LocalDateTime date, int calories) {
         super(id);
+        this.description = description;
+        this.date = date;
+        this.calories = calories;
+    }
+
+    public UserMeal(String description, LocalDateTime date, int calories) {
         this.description = description;
         this.date = date;
         this.calories = calories;
@@ -86,5 +92,20 @@ public class UserMeal extends BaseEntity {
                 TimeUtil.toString(date) + " '" +
                 description + "' " +
                 "calories=" + calories;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserMeal userMeal = (UserMeal) o;
+        return (this.toString()).equals(userMeal.toString());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = description != null ? description.hashCode() : 0;
+        result = 31 * result + date.hashCode();
+        return result;
     }
 }

@@ -6,8 +6,6 @@ import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.NoResultException;
 import java.util.List;
 
 @Service

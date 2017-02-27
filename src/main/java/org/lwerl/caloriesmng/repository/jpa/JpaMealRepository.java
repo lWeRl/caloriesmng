@@ -35,10 +35,11 @@ public class JpaMealRepository implements UserMealRepository {
     @Transactional
     @Override
     public boolean delete(int id, int userId) {
-        return (entityManager.createNamedQuery(UserMeal.DELETE)
+        int i =entityManager.createNamedQuery(UserMeal.DELETE)
                 .setParameter("id", id)
                 .setParameter("userId", userId)
-                .executeUpdate() != 0);
+                .executeUpdate();
+        return (i != 0);
     }
 
     @Override

@@ -2,6 +2,7 @@ package org.lwerl.caloriesmng.service;
 
 import org.lwerl.caloriesmng.model.UserMeal;
 import org.lwerl.caloriesmng.repository.UserMealRepository;
+import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,12 +16,14 @@ public class UserMealServiceImpl implements UserMealService {
 
     @Override
     public UserMeal get(int id, int userId) {
-        return repository.get(id, userId);
+        UserMeal meal = repository.get(id, userId);
+        if (meal == null) throw new NotFoundException("");
+        return meal;
     }
 
     @Override
     public void delete(int id, int userId) {
-        repository.delete(id, userId);
+        if (!repository.delete(id, userId)) throw new NotFoundException("");
     }
 
     @Override
