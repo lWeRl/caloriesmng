@@ -2,18 +2,29 @@ package org.lwerl.caloriesmng.model;
 
 import org.lwerl.caloriesmng.util.TimeUtil;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "MEALS")
 public class UserMeal extends BaseEntity {
+    @Column(name="description", nullable = false)
     private String description;
+    @Column(name="date", nullable = false)
+    @NotNull
     private LocalDateTime date;
+    @Column(name="calories", nullable = false)
     private int calories;
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
     public UserMeal() {
     }
 
-    public UserMeal(String description, LocalDateTime date, int calories) {
+    public UserMeal(Integer id, String description, LocalDateTime date, int calories) {
+        super(id);
         this.description = description;
         this.date = date;
         this.calories = calories;

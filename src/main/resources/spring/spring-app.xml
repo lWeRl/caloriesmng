@@ -27,7 +27,7 @@
 
     <!--Подключаем аннотации-->
     <context:annotation-config/>
-    <context:component-scan base-package="org.lwerl.caloriesmng.repository"/>
+    <!--<context:component-scan base-package="org.lwerl.caloriesmng.repository"/>-->
     <context:component-scan base-package="org.lwerl.caloriesmng.service"/>
     <context:component-scan base-package="org.lwerl.caloriesmng.web"/>
 </beans>
