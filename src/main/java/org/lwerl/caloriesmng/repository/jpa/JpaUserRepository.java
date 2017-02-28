@@ -4,6 +4,7 @@ import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.repository.UserRepository;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.stereotype.Repository;
+//import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -11,7 +12,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-@Transactional(readOnly = true)
+@Transactional(readOnly = true/*, propagation = Propagation.SUPPORTS*/)
 public class JpaUserRepository implements UserRepository {
 
     /*

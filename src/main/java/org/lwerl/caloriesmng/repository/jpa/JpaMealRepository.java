@@ -5,6 +5,7 @@ import org.lwerl.caloriesmng.model.UserMeal;
 import org.lwerl.caloriesmng.repository.UserMealRepository;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
+//import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = true/*, propagation = Propagation.SUPPORTS*/)
 @Repository
 public class JpaMealRepository implements UserMealRepository {
 

@@ -1,10 +1,12 @@
 package org.lwerl.caloriesmng.model;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.Pattern;
 import java.util.*;
 
 @NamedQueries({
@@ -20,6 +22,8 @@ public class User extends NamedEntity {
     public static final String ALL_SORTED = "User.getAllSorted";
     public static final String BY_EMAIL = "User.getByEmail";
 
+    //@Pattern()
+    @Email
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
