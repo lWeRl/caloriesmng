@@ -33,7 +33,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getByEmail(String email) throws NotFoundException {
         try {
-            return repository.getByEmail(email);
+            User u = repository.getByEmail(email);
+            if (u == null) throw new NotFoundException("");
+            return u;
         } catch (Exception e) {
             throw new NotFoundException("");
         }
@@ -47,7 +49,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User update(User user) throws NotFoundException {
         try {
-            return repository.save(user);
+            User u = repository.save(user);
+            if(u==null) throw new NotFoundException("");
+            return u;
         } catch (Exception e) {
             throw new NotFoundException("");
         }

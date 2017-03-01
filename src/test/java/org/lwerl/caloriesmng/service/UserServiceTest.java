@@ -53,7 +53,7 @@ public class UserServiceTest {
 
     @Test(expected = NotFoundException.class)
     public void getByEmailException() throws Exception {
-        User user = service.getByEmail("null@null.ru");
+        service.getByEmail("null@null.ru");
     }
 
     @Test
