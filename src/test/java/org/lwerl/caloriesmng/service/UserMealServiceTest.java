@@ -9,6 +9,7 @@ import org.lwerl.caloriesmng.model.UserMeal;
 import org.lwerl.caloriesmng.util.DBPopulator;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,7 +21,7 @@ import java.time.LocalDateTime;
         "classpath:spring/spring-db.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
-
+@ActiveProfiles("postgres")
 public class UserMealServiceTest {
     @Autowired
     private DBPopulator populator;
