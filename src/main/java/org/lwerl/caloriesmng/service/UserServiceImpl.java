@@ -3,6 +3,8 @@ package org.lwerl.caloriesmng.service;
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.repository.UserRepository;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,11 +15,13 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserRepository repository;
 
+    @CacheEvict(value = "users", allEntries = true)
     @Override
     public User save(User user) {
         return repository.save(user);
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     @Override
     public void delete(int id) throws NotFoundException {
         if (!repository.delete(id)) throw new NotFoundException("");
@@ -41,11 +45,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Cacheable("users")
     @Override
     public List<User> getAll() {
         return repository.getAll();
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     @Override
     public User update(User user) throws NotFoundException {
         try {
