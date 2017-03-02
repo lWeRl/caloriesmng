@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
         "classpath:spring/spring-db.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("postgres")
 public class UserMealServiceTest {
     @Autowired
     private DBPopulator populator;

@@ -10,7 +10,6 @@ import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.util.DBPopulator;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -21,8 +20,6 @@ import javax.annotation.Resource;
         "classpath:spring/spring-db.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ActiveProfiles("hsqldb")
-@ActiveProfiles("postgres")
 public class UserServiceTest {
     @Autowired
     DBPopulator populator;
@@ -86,7 +83,7 @@ public class UserServiceTest {
     }
 
     @Test(expected = NotFoundException.class)
-    public void updateException()  throws Exception {
-       service.update((new User(99999, "Test", "test", "test", Role.USER)));
+    public void updateException() throws Exception {
+        service.update((new User(99999, "Test", "test", "test", Role.USER)));
     }
 }
