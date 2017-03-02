@@ -107,11 +107,10 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
 
-        <!--Cache-->
         <dependency>
-            <groupId>org.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <version>${ehcache.version}</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${hibernate.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>slf4j-api</artifactId>
@@ -119,6 +118,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--Cache-->
+        <!--<dependency>-->
+            <!--<groupId>org.ehcache</groupId>-->
+            <!--<artifactId>ehcache</artifactId>-->
+            <!--<version>${ehcache.version}</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<artifactId>slf4j-api</artifactId>-->
+                    <!--<groupId>org.slf4j</groupId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>net.sf.ehcache</groupId>
@@ -128,6 +140,10 @@
                 <exclusion>
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -175,7 +191,7 @@
             </exclusions>
         </dependency>
     </dependencies>
-
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////-->
     <profiles>
         <profile>
             <id>hsqldb</id>

@@ -25,7 +25,7 @@
            diskExpiryThreadIntervalSeconds="1"
            memoryStoreEvictionPolicy="LRU"/>
 
-    <cache name="ru.javawebinar.topjava.model.User"
+    <cache name="org.lwerl.caloriesmng.model.User"
            maxElementsInMemory="1000"/>
 
 </ehcache>

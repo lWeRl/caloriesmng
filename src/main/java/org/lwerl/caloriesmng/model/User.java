@@ -1,13 +1,16 @@
 package org.lwerl.caloriesmng.model;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Pattern;
 import java.util.*;
+
+//import javax.validation.constraints.Pattern;
 
 @NamedQueries({
         @NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id=:id"),
@@ -17,6 +20,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "USERS", uniqueConstraints = {@UniqueConstraint(name = "unique_email", columnNames = "email")})
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class User extends NamedEntity {
     public static final String DELETE = "User.delete";
     public static final String ALL_SORTED = "User.getAllSorted";
@@ -44,6 +48,7 @@ public class User extends NamedEntity {
     @CollectionTable(name = "USER_ROLES", joinColumns = @JoinColumn(name = "user_id"))
     //Привязывам таблицу с указанием fk
     @Column(name = "role") //указываем что вытаскивать из указанной таблицы
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Role> roles;
 
     public User() {
@@ -101,12 +106,12 @@ public class User extends NamedEntity {
         return roles;
     }
 
-    public void setRoles(Collection<Role> roles) {
-        this.roles = EnumSet.copyOf(roles);
-    }
-
     public void setRoles(Role... authorities) {
         setRoles(Arrays.asList(authorities));
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = EnumSet.copyOf(roles);
     }
 
     @Override

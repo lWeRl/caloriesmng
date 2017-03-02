@@ -8,6 +8,7 @@ import org.lwerl.caloriesmng.UserTestData;
 import org.lwerl.caloriesmng.model.Role;
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.util.DBPopulator;
+import org.lwerl.caloriesmng.util.JpaUtil;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,15 +26,20 @@ public class UserServiceTest {
     DBPopulator populator;
     @Resource
     UserService service;
+    @Resource
+    JpaUtil jpaUtil;
 
     @Before
     public void setUp() {
         populator.execute();
+        jpaUtil.clear2ndLevelHibernateCache();
     }
 
     @Test
     public void get() throws Exception {
         User user = service.get(100000);
+        System.out.println(user);
+        System.out.println(UserTestData.USER);
         Assert.assertTrue(user.equals(UserTestData.USER));
     }
 
