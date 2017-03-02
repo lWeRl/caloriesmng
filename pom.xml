@@ -121,15 +121,15 @@
 
         <!--Cache-->
         <!--<dependency>-->
-            <!--<groupId>org.ehcache</groupId>-->
-            <!--<artifactId>ehcache</artifactId>-->
-            <!--<version>${ehcache.version}</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<artifactId>slf4j-api</artifactId>-->
-                    <!--<groupId>org.slf4j</groupId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
+        <!--<groupId>org.ehcache</groupId>-->
+        <!--<artifactId>ehcache</artifactId>-->
+        <!--<version>${ehcache.version}</version>-->
+        <!--<exclusions>-->
+        <!--<exclusion>-->
+        <!--<artifactId>slf4j-api</artifactId>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--</exclusion>-->
+        <!--</exclusions>-->
         <!--</dependency>-->
 
         <dependency>
@@ -144,6 +144,47 @@
                 <exclusion>
                     <artifactId>slf4j-api</artifactId>
                     <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--WEB-->
+        <!--<dependency>-->
+        <!--<groupId>javax.servlet</groupId>-->
+        <!--<artifactId>javax.servlet-api</artifactId> &lt;!&ndash;JavaEE servlet API&ndash;&gt;-->
+        <!--<version>3.1.0</version>-->
+        <!--<scope>provided</scope>&lt;!&ndash;не включается при сборке проекта, используется для решения зависимостей&ndash;&gt;-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId> <!--JavaEE servlet API-->
+            <version>${tomcat.version}</version>
+            <scope>provided</scope><!--не включается при сборке проекта, используется для решения зависимостей-->
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!--Spring-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -168,30 +209,8 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <!--WEB-->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId> <!--JavaEE servlet API-->
-            <version>3.1.0</version>
-            <scope>provided</scope><!--не включается при сборке проекта, используется для решения зависимостей-->
-        </dependency>
-
-        <!--Spring-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
     </dependencies>
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <!--/////////////////////////////////////////////////////////////////////////////////////////////////-->
     <profiles>
         <profile>
             <id>hsqldb</id>
@@ -213,7 +232,7 @@
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
                     <version>${postgresql.version}</version>
-                    <scope>runtime</scope>
+                    <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.tomcat</groupId>
