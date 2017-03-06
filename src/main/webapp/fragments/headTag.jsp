@@ -9,6 +9,6 @@
     <!-- default header name is X-CSRF-TOKEN -->
     <%--<meta name="_csrf_header" content="${_csrf.headerName}"/>--%>
     <title><fmt:message key="app.title"/></title>
-    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">
     <%--<link rel="shortcut icon" href="resources/images/icon-meal.png">--%>
 </head>

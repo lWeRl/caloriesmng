@@ -62,4 +62,9 @@ public class UserServiceImpl implements UserService {
             throw new NotFoundException("");
         }
     }
+
+    @CacheEvict(value = "users", allEntries = true)
+    @Override
+    public void evictCache() {
+    }
 }

@@ -5,7 +5,7 @@
 <%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
 <%--<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
 
-<fmt:setLocale value="en"/>
+<%--<fmt:setLocale value="en"/>--%>
 <fmt:setBundle basename="messages.app"/>
 <header><fmt:message key="app.title"/></header>
 

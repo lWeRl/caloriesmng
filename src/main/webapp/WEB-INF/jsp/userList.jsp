@@ -7,11 +7,11 @@
 
 <html>
 <head>
-    <jsp:include page="fragments/headTag.jsp"/>
+    <jsp:include page="../../fragments/headTag.jsp"/>
 </head>
 <body>
 <section>
-    <jsp:include page="fragments/bodyHeader.jsp"/>
+    <jsp:include page="../../fragments/bodyHeader.jsp"/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
@@ -28,15 +28,15 @@
                 <td><c:out value="${user.name}"/></td>
                 <td><a href="mailto:${user.email}">${user.email}</a></td>
                 <td>${user.roles}</td>
-                <%--<td>${user.enabled}</td>--%>
+                    <%--<td>${user.enabled}</td>--%>
                 <td><%=user.isEnabled()%></td>
-                <%--<td><% System.out.println(user.isEnabled());%></td>--%>
+                    <%--<td><% System.out.println(user.isEnabled());%></td>--%>
                 <td><fmt:formatDate value="${user.registered}" pattern="dd-MMMM-yyyy"/></td>
             </tr>
         </c:forEach>
     </table>
 </section>
 <hr>
-<jsp:include page="fragments/footer.jsp"/>
+<jsp:include page="../../fragments/footer.jsp"/>
 </body>
 </html>
