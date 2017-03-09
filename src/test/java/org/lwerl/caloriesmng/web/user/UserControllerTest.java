@@ -1,14 +1,12 @@
-package org.lwerl.caloriesmng.web.controller.user;
+package org.lwerl.caloriesmng.web.user;
 
 import org.junit.Test;
 import org.lwerl.caloriesmng.web.WebTest;
-import org.springframework.test.web.servlet.RequestBuilder;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

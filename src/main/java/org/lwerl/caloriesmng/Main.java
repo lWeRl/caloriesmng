@@ -16,13 +16,13 @@ public class Main {
 
     public static void main(String[] args) {
 //        System.out.format("Hello Topjava Webinar!");
-        ConfigurableApplicationContext cac = new ClassPathXmlApplicationContext("/spring/spring-app.xml" , "/spring/spring-db.xml");
-        //System.out.println(Arrays.toString(cac.getBeanDefinitionNames()));
-        UserRepository repository = cac.getBean(UserRepository.class);
-        System.out.println(repository.get(100000).toString());
-        User user = new User("name", "name", "name", Role.USER);
-        System.out.println(user.toString());
-        repository.save(user);
+//        ConfigurableApplicationContext cac = new ClassPathXmlApplicationContext("/spring/spring-app.xml", "/spring/spring-db.xml");
+//        //System.out.println(Arrays.toString(cac.getBeanDefinitionNames()));
+//        UserRepository repository = cac.getBean(UserRepository.class);
+//        System.out.println(repository.get(100000).toString());
+//        User user = new User("name", "name", "name", Role.USER);
+//        System.out.println(user.toString());
+//        repository.save(user);
         //cac.close();
     }
 }

@@ -1,4 +1,4 @@
-package org.lwerl.caloriesmng.web.controller.user;
+package org.lwerl.caloriesmng.web.meal;
 
 import org.lwerl.caloriesmng.service.UserMealService;
 import org.springframework.beans.factory.annotation.Autowired;

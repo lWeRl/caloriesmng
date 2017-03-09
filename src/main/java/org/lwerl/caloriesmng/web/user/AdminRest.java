@@ -1,6 +1,7 @@
 package org.lwerl.caloriesmng.web.user;
 
 import org.lwerl.caloriesmng.model.User;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface AdminRest {
 
     List<User> getAll();
 
-    void create(User user);
+    ResponseEntity<User> create(User user);
 
     void update(User user);
 

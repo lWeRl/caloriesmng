@@ -1,5 +1,6 @@
 package org.lwerl.caloriesmng.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Email;
@@ -49,6 +50,7 @@ public class User extends NamedEntity {
     //Привязывам таблицу с указанием fk
     @Column(name = "role") //указываем что вытаскивать из указанной таблицы
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//     @JsonIgnore
     private Set<Role> roles;
 
     public User() {

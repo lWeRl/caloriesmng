@@ -7,7 +7,7 @@ import org.lwerl.caloriesmng.model.Role;
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.util.exception.NotFoundException;
 import org.lwerl.caloriesmng.web.user.AdminRest;
-import org.lwerl.caloriesmng.web.user.AdminRestImpl;
+import org.lwerl.caloriesmng.web.user.AdminRestController;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,7 +21,7 @@ public class AdminUserRepositoryTest {
     public static void beforeClass() {
         cac = new ClassPathXmlApplicationContext("spring/spring-app.xml");
         System.out.println("\n" + Arrays.toString(cac.getBeanDefinitionNames()) + "\n");
-        controller = cac.getBean(AdminRestImpl.class);
+        controller = cac.getBean(AdminRestController.class);
     }
 
     @AfterClass
