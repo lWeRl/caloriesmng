@@ -32,7 +32,7 @@ public class User extends NamedEntity {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @NotEmpty
+    @NotEmpty//для строк
     @Length(min = 5)
     @Column(name = "password", nullable = false)
     private String password;
@@ -41,7 +41,7 @@ public class User extends NamedEntity {
     private boolean enabled;
 
     @Column(name = "registered", nullable = false)
-    @NotNull
+    @NotNull// для объектов
     private Date registered = new Date();
 
     @Enumerated(value = EnumType.STRING) //вытаскиваются как String

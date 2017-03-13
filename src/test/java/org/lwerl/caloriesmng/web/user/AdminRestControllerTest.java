@@ -4,38 +4,64 @@ import org.junit.Test;
 import org.lwerl.caloriesmng.web.WebTest;
 import org.springframework.http.MediaType;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-import static org.hamcrest.core.AllOf.allOf;
-import static org.hamcrest.core.IsCollectionContaining.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import java.util.Collections;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
+import static org.lwerl.caloriesmng.model.Role.ADMIN;
+import static org.lwerl.caloriesmng.model.Role.USER;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Created by lWeRl on 06.03.2017.
  */
-public class AdminRestControllerTest extends WebTest{
+public class AdminRestControllerTest extends WebTest {
     private static final String REST_URL = "/rest/admin/users/";
+
     @Test
     public void getTest() throws Exception {
-        mockMvc.perform(get("/rest/admin/users/100001"))
+        mockMvc.perform(get(REST_URL + "100001"))
                 .andExpect(status().isOk())
                 .andDo(print())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
-                //.andExpect(Mat)
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.id", is(100001)))
+                .andExpect(jsonPath("$.name", is("Admin")))
+                .andExpect(jsonPath("$.email", is("admin@test.ru")))
+                .andExpect(jsonPath("$.enabled", is(true)))
+                .andExpect(jsonPath("$.roles", is(Collections.singletonList(ADMIN.toString()))));
     }
 
     @Test
     public void getByEmailTest() throws Exception {
-
+        mockMvc.perform(get(REST_URL + "by/?email=admin@test.ru"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.id", is(100001)))
+                .andExpect(jsonPath("$.name", is("Admin")))
+                .andExpect(jsonPath("$.email", is("admin@test.ru")))
+                .andExpect(jsonPath("$.enabled", is(true)))
+                .andExpect(jsonPath("$.roles", is(Collections.singletonList(ADMIN.toString()))));
     }
 
     @Test
     public void getAll() throws Exception {
-
+        mockMvc.perform(get(REST_URL))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].id", is(100001)))
+                .andExpect(jsonPath("$[0].name", is("Admin")))
+                .andExpect(jsonPath("$[0].email", is("admin@test.ru")))
+                .andExpect(jsonPath("$[0].enabled", is(true)))
+                .andExpect(jsonPath("$[0].roles", is(Collections.singletonList(ADMIN.toString()))))
+                .andExpect(jsonPath("$[1].id", is(100000)))
+                .andExpect(jsonPath("$[1].name", is("User")))
+                .andExpect(jsonPath("$[1].email", is("user@test.ru")))
+                .andExpect(jsonPath("$[1].enabled", is(true)))
+                .andExpect(jsonPath("$[1].roles", containsInAnyOrder(USER.toString())));
     }
 
     @Test

@@ -1,6 +1,7 @@
 package org.lwerl.caloriesmng.util;
 
 import com.fasterxml.jackson.databind.MappingIterator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.io.IOException;
  * Created by lWeRl on 06.03.2017.
  */
 public class JsonUtil {
-    private static final Mapper mapper = new Mapper();
+    private static final ObjectMapper mapper = Mapper.getMapper();
 
     public static <T> MappingIterator<T> readValues(String json, Class<T> clazz) throws IOException {
         ObjectReader reader = mapper.readerFor(clazz);

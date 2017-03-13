@@ -11,4 +11,7 @@ public class LoggedUser {
     static public final User LOGGED_USER = new User(100000, "User", "user@test.ru", "user", Role.USER);
     private User loggedUser = LOGGED_USER;
 
+    public static Integer id(){
+        return LOGGED_USER.getId();
+    }
 }

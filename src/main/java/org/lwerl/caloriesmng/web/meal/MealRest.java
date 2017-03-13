@@ -14,9 +14,9 @@ public interface MealRest {
 
     void deleteAll();
 
-    void update(UserMeal meal);
+    void update(UserMeal meal, int id);
 
-    void create(UserMeal meal);
+    UserMeal create(UserMeal meal);
 
     List<UserMeal> getBetween(LocalDateTime startDate, LocalDateTime endDate);
 }

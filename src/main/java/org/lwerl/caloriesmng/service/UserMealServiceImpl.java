@@ -28,6 +28,7 @@ public class UserMealServiceImpl implements UserMealService {
 
     @Override
     public List<UserMeal> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId) {
+        if (endDate.toString().isEmpty()) endDate = LocalDateTime.now();
         return repository.getBetween(startDate, endDate, userId);
     }
 

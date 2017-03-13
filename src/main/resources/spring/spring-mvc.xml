@@ -11,15 +11,35 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <mvc:annotation-driven>
-        <mvc:message-converters>
+
+    <bean class="org.lwerl.caloriesmng.util.Mapper" id="objectMapper" factory-method="getMapper"/>
+    <mvc:annotation-driven conversion-service="conversionService">
+        <mvc:message-converters >
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="objectMapper">
-                    <bean class="org.lwerl.caloriesmng.util.Mapper"/>
+                <property name="objectMapper" ref="objectMapper"/>
+            </bean>
+
+            <!--uTF-8-->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value> <!--- Fix AbstractMessageConverterMethodProcessor#142 -->
+                    </list>
                 </property>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+
+    <!--StringToLocalDateTimeConverter-->
+    <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
+        <property name="converters">
+            <set>
+                <bean class="org.lwerl.caloriesmng.util.converter.StringToLocalDateTimeConverter"/>
+            </set>
+        </property>
+    </bean>
+
     <mvc:resources mapping="/resources/**" location="/resources/" />
     <context:component-scan base-package="org.lwerl.caloriesmng.web" />
 

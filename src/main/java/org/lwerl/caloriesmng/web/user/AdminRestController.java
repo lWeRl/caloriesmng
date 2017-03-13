@@ -44,8 +44,9 @@ public class AdminRestController implements AdminRest {
         return service.getAll();
     }
 
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Override
-    public ResponseEntity<User> create(User user) {
+    public ResponseEntity<User> create(@RequestBody User user) {
         LOG.info("create " + user);
         User created = service.save(user);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()

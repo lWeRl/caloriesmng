@@ -1,5 +1,6 @@
 package org.lwerl.caloriesmng.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.lwerl.caloriesmng.util.TimeUtil;
 
 import javax.persistence.*;
@@ -35,6 +36,7 @@ public class UserMeal extends BaseEntity {
     private int calories;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User user;
 
     public UserMeal() {
