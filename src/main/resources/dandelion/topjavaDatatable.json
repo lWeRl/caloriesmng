@@ -1,0 +1,19 @@
+{
+    "bundle" : "topjavaDatatable",
+    "dependencies" : [ "topjava", "datetimepicker", "datatables"],
+    "assets": [{
+        "name": "jquery-noty",
+        "version": "2.2.4",
+        "type": "js",
+        "locations": {
+            "webjar": "jquery.noty.packaged.min.js"
+        }
+    }, {
+        "name": "customDatatable",
+        "version": "1.0.0",
+        "type": "js",
+        "locations": {
+            "webapp": "/resources/js/customDatatable.js"
+        }
+    }]
+}

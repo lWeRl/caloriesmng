@@ -1,0 +1,12 @@
+{
+    "bundle" : "main",
+    "dependencies" : [ "bootstrap3" ],
+    "assets": [{
+        "name": "main",
+        "version": "1.0.0",
+        "type": "css",
+        "locations": {
+            "webapp": "/resources/css/style.css"
+        }
+    }]
+}
