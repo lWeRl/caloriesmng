@@ -1,6 +1,6 @@
 {
-    "bundle" : "topjavaDatatable",
-    "dependencies" : [ "topjava", "datetimepicker", "datatables"],
+    "bundle" : "mainDatatable",
+    "dependencies" : [ "main", "datetimepicker", "datatables"],
     "assets": [{
         "name": "jquery-noty",
         "version": "2.2.4",

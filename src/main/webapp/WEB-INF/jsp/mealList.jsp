@@ -8,11 +8,11 @@
 
 <html>
 <head>
-    <jsp:include page="../../fragments/headTag.jsp"/>
+    <jsp:include page="fragments/headTag.jsp"/>
 </head>
 <body>
 <section>
-    <jsp:include page="../../fragments/bodyHeader.jsp"/>
+    <jsp:include page="fragments/bodyHeader.jsp"/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
@@ -34,6 +34,6 @@
     </table>
 </section>
 <hr>
-<jsp:include page="../../fragments/footer.jsp"/>
+<jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>

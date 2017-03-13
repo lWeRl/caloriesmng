@@ -41,6 +41,7 @@
     </bean>
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
     <context:component-scan base-package="org.lwerl.caloriesmng.web" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
