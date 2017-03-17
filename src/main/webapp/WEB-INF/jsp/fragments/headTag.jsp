@@ -10,5 +10,5 @@
     <%--<meta name="_csrf_header" content="${_csrf.headerName}"/>--%>
     <title><fmt:message key="app.title"/></title>
     <%--<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">--%>
-    <link rel="shortcut icon" href=""<c:url value="/resources/images/icon-meal.png"/>">
+    <link rel="shortcut icon" href="<c:url value="/resources/images/icon-meal.png"/>">
 </head>
