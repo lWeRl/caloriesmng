@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.lwerl.caloriesmng.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,6 +25,7 @@ import javax.annotation.PostConstruct;
         "classpath:spring/spring-db.xml",
         "classpath:spring/spring-app.xml",
         "classpath:spring/spring-mvc.xml",
+        "classpath:spring/spring-security.xml",
 })
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,11 +37,14 @@ public abstract class WebTest {
     private WebApplicationContext webApplicationContext;
 
     @Autowired
+    private FilterChainProxy restSecurityFilterChain;
+
+    @Autowired
     UserService service;
 
     @PostConstruct
     void postConstruct(){
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).addFilter(restSecurityFilterChain).build();
     }
 
     @Before

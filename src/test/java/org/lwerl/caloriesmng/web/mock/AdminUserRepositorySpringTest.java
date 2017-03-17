@@ -19,7 +19,7 @@ public class AdminUserRepositorySpringTest {
 
     @Test
     public void testCreate() throws Exception{
-        controller.create(new User("Name", "email@test.com", "password", Role.USER));
+        controller.create(new User("Name", "email@test.com", "password", Role.ROLE_USER));
     }
 
     @Test

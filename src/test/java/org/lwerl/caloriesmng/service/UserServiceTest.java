@@ -78,18 +78,18 @@ public class UserServiceTest {
 
     @Test
     public void save() throws Exception {
-        User user = service.save(new User("Test", "test", "test", Role.USER));
+        User user = service.save(new User("Test", "test", "test", Role.ROLE_USER));
         Assert.assertTrue(user.equals(service.get(100007)));
     }
 
     @Test
     public void update() throws Exception {
-        User user = service.update((new User(100000, "Test", "test", "test", Role.USER)));
+        User user = service.update((new User(100000, "Test", "test", "test", Role.ROLE_USER)));
         Assert.assertTrue(user.equals(service.getByEmail("test")));
     }
 
     @Test(expected = NotFoundException.class)
     public void updateException() throws Exception {
-        service.update((new User(99999, "Test", "test", "test", Role.USER)));
+        service.update((new User(99999, "Test", "test", "test", Role.ROLE_USER)));
     }
 }
