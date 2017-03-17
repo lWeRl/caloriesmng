@@ -11,12 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
 import static org.lwerl.caloriesmng.LoggedUser.LOGGED_USER;
-@RequestMapping(value = "/rest/user")
-@Controller
+@RestController
+@RequestMapping(value = "/rest/user/")
 public class UserRestImpl implements UserRest {
     @Resource
     private UserService service;

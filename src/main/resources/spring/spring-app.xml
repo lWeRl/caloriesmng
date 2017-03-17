@@ -33,4 +33,5 @@
     <context:component-scan base-package="org.lwerl.caloriesmng.service"/>
     <context:component-scan base-package="org.lwerl.caloriesmng.web"/>
     <import resource="spring-ehcache.xml"/>
+    <!--<import resource="spring-security.xml"/>-->
 </beans>
