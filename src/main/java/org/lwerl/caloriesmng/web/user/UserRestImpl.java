@@ -5,6 +5,7 @@ import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.service.UserService;
 import org.lwerl.caloriesmng.service.UserServiceImpl;
 import org.lwerl.caloriesmng.util.LoggerWrapper;
+import org.lwerl.caloriesmng.web.ExceptionInfoHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import javax.annotation.Resource;
 import static org.lwerl.caloriesmng.LoggedUser.LOGGED_USER;
 @RestController
 @RequestMapping(value = "/rest/user/")
-public class UserRestImpl implements UserRest {
+public class UserRestImpl extends ExceptionInfoHandler implements UserRest {
     @Resource
     private UserService service;
 

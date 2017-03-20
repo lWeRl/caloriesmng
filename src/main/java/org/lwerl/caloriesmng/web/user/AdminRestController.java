@@ -3,6 +3,7 @@ package org.lwerl.caloriesmng.web.user;
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.service.UserService;
 import org.lwerl.caloriesmng.util.LoggerWrapper;
+import org.lwerl.caloriesmng.web.ExceptionInfoHandler;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/rest/admin/users")
-public class AdminRestController implements AdminRest {
+public class AdminRestController extends ExceptionInfoHandler implements AdminRest {
 
     private static final LoggerWrapper LOG = LoggerWrapper.get(AdminRestController.class);
 

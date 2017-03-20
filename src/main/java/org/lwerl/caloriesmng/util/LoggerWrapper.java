@@ -1,7 +1,9 @@
 package org.lwerl.caloriesmng.util;
 
+import org.lwerl.caloriesmng.util.exception.ErrorInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.validation.BindingResult;
 
 public class LoggerWrapper {
 
@@ -64,5 +66,15 @@ public class LoggerWrapper {
     public UnsupportedOperationException getUnsupportedOperationException(String msg) {
         logger.error(msg);
         return new UnsupportedOperationException(msg);
+    }
+
+//    public ValidationException getValidationException(BindingResult result) {
+//        logger.error("Validation exception");
+//        return new ValidationException(result);
+//    }
+
+    public ErrorInfo getErrorInfo(CharSequence requestUrl, Exception e) {
+        logger.error("Exception at request " + requestUrl, e);
+        return new ErrorInfo(requestUrl, e);
     }
 }

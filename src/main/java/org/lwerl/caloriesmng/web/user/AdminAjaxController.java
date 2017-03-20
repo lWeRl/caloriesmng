@@ -4,6 +4,7 @@ import org.lwerl.caloriesmng.model.Role;
 import org.lwerl.caloriesmng.model.User;
 import org.lwerl.caloriesmng.service.UserService;
 import org.lwerl.caloriesmng.util.LoggerWrapper;
+import org.lwerl.caloriesmng.web.ExceptionInfoHandler;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/ajax/admin/users/")
-public class AdminAjaxController {
+public class AdminAjaxController extends ExceptionInfoHandler{
     private static final LoggerWrapper LOG = LoggerWrapper.get(AdminAjaxController.class);
     @Resource
     private UserService service;

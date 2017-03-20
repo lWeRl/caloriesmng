@@ -4,6 +4,7 @@ import org.lwerl.caloriesmng.LoggedUser;
 import org.lwerl.caloriesmng.model.UserMeal;
 import org.lwerl.caloriesmng.service.UserMealService;
 import org.lwerl.caloriesmng.util.LoggerWrapper;
+import org.lwerl.caloriesmng.web.ExceptionInfoHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class AbstractMealRestController implements MealRest {
+public class AbstractMealRestController  extends ExceptionInfoHandler implements MealRest {
     private static final LoggerWrapper LOG = LoggerWrapper.get(AbstractMealRestController.class);
     //не имеет перменных, то есть не имеет состояния - ThreadSafe
 

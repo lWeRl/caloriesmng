@@ -5,6 +5,7 @@ import org.lwerl.caloriesmng.model.UserMeal;
 import org.lwerl.caloriesmng.service.UserMealService;
 import org.lwerl.caloriesmng.util.LoggerWrapper;
 import org.lwerl.caloriesmng.util.TimeUtil;
+import org.lwerl.caloriesmng.web.ExceptionInfoHandler;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/ajax/profile/meals/")
-public class MealAjaxController {
+public class MealAjaxController extends ExceptionInfoHandler{
     private static final LoggerWrapper LOG = LoggerWrapper.get(MealAjaxController.class);
     @Resource
     private UserMealService service;
