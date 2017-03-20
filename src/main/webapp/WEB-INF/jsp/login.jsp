@@ -44,7 +44,7 @@
 
         <p>Admin login: <b>admin@test.com / admin</b></p>
 
-        <%--<p><a class="btn btn-primary btn-lg" role="button" href="register">Register &raquo;</a></p>--%>
+        <p><a class="btn btn-primary btn-lg" role="button" href="register">Register &raquo;</a></p>
 
         <p>Technology stack: <a href="http://projects.spring.io/spring-security/">Spring Security</a>,
             <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html">Spring MVC</a>,

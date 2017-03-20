@@ -22,7 +22,7 @@
 
     <http use-expressions="true">
         <intercept-url pattern="/login" access="permitAll"/>
-        <!--<intercept-url pattern="/register" access="permitAll"/>-->
+        <intercept-url pattern="/register" access="permitAll"/>
 
         <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/users" access="hasRole('ROLE_ADMIN')"/>

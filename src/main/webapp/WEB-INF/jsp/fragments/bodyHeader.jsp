@@ -20,6 +20,8 @@
                         <c:url value="/users" var="users"/>
                         <a class="btn btn-info" role="button" href="${users}"><fmt:message key="users.title"/></a>
                     </sec:authorize>
+                    <c:url value="/profile" var="profile"/>
+                    <a class="btn btn-info" role="button" href="${profile}">${userTo.name} profile</a>
                     <a class="btn btn-primary" role="button" href="logout">Logout</a>
                     <%--<c:url value="/profile" var="profile"/>--%>
                         <%--<a class="btn btn-info" role="button" href="${profile}">${userTo.name} profile</a>--%>

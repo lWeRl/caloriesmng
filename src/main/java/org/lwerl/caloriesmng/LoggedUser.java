@@ -46,6 +46,11 @@ public class LoggedUser implements UserDetails{
         Objects.requireNonNull(user, "No authorized user found");
         return user;
     }
+
+    public User getUser(){
+        return loggedUser;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return loggedUser.getRoles();
