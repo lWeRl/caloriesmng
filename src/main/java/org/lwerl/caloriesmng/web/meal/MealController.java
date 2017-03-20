@@ -15,9 +15,9 @@ public class MealController {
     @Autowired
     UserMealService service;
 
-    @RequestMapping(value = "/meals", method = RequestMethod.GET)
-    public String meals(Model model) {
-        model.addAttribute("mealList", service.getAll(100000));
-        return "mealList";
-    }
+//    @RequestMapping(value = "/meals", method = RequestMethod.GET)
+//    public String meals(Model model) {
+//        model.addAttribute("mealList", service.getAll(100000));
+//        return "mealList";
+//    }
 }

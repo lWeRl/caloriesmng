@@ -15,10 +15,10 @@ public class UserController {
     @Autowired
     UserService service;
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+//    @RequestMapping(value = "/users", method = RequestMethod.GET)
 //    public String users(Model model) {
-     public String users() {
+//    public String users() {
 //        model.addAttribute("userList", service.getAll());
-        return "userList";
-    }
+//        return "userList";
+//    }
 }

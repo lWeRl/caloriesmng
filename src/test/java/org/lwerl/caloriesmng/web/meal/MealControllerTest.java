@@ -24,12 +24,12 @@ public class MealControllerTest extends WebTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("mealList"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/mealList.jsp"))
-                .andExpect(model().attribute("mealList", hasSize(4)))
-                .andExpect(model().attribute("mealList", hasItem(
-                        allOf(
-                                hasProperty("id", is(UserTestData.MEAL1.getId())),
-                                hasProperty("description" , is(UserTestData.MEAL1.getDescription()))
-                        )
-                )));
+                .andExpect(model().attribute("mealList", hasSize(4)));
+//                .andExpect(model().attribute("mealList", hasItem(
+//                        allOf(
+//                                hasProperty("id", is(UserTestData.MEAL1.getId())),
+//                                hasProperty("description" , is(UserTestData.MEAL1.getDescription()))
+//                        )
+//                )));
     }
 }

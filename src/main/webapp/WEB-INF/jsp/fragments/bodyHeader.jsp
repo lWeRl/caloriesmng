@@ -2,8 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <fmt:setBundle basename="messages.app"/>
-<%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
-<%--<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%--<fmt:setLocale value="en"/>--%>
 <%--<header><fmt:message key="app.title"/></header>--%>
@@ -15,8 +15,18 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right">
-                <a class="btn btn-info" role="button" href="users"><fmt:message key="users.title"/></a>
-                <a class="btn btn-info" role="button" href="profile">${user.getName()} profile</a>
+                <sec:authorize access="isAuthenticated()">
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <c:url value="/users" var="users"/>
+                        <a class="btn btn-info" role="button" href="${users}"><fmt:message key="users.title"/></a>
+                    </sec:authorize>
+                    <a class="btn btn-primary" role="button" href="logout">Logout</a>
+                    <%--<c:url value="/profile" var="profile"/>--%>
+                        <%--<a class="btn btn-info" role="button" href="${profile}">${userTo.name} profile</a>--%>
+                        <%--<input type="submit" class="btn btn-primary" value="Logout">--%>
+                </sec:authorize>
+                <%--<a class="btn btn-info" role="button" href="users"><fmt:message key="users.title"/></a>--%>
+                <%--<a class="btn btn-info" role="button" href="profile">${user.getName()} profile</a>--%>
             </form>
         </div><!--/.navbar-collapse -->
     </div>
