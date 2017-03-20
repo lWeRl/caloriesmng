@@ -42,7 +42,7 @@
 
         <p>User login: <b>user@test.ru / user</b></p>
 
-        <p>Admin login: <b>admin@test.com / admin</b></p>
+        <p>Admin login: <b>admin@test.ru / admin</b></p>
 
         <p><a class="btn btn-primary btn-lg" role="button" href="register">Register &raquo;</a></p>
 
