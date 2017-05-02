@@ -24,7 +24,7 @@
                            accept-charset="UTF-8">
 
                     <topjava:inputField label="Name" name="name"/>
-                    <topjava:inputField label="Email" name="email"/>
+                    <topjava:inputField label="Email" name="email" inputType="email"/>
                     <topjava:inputField label="Password" name="password" inputType="password"/>
                     <%--<topjava:inputField label="Calories per day" name="caloriesPerDay"/>--%>
 

@@ -13,7 +13,8 @@
 
         <div class="col-xs-8">
             <c:choose>
-                <c:when test="${inputType == 'password'}"><form:password path="${name}"/></c:when>
+                <c:when test="${inputType == 'password'}"><form:password pattern=".{5,}" path="${name}"/></c:when>
+                <c:when test="${inputType == 'email'}"><form:input type="email" path="${name}"/></c:when>
                 <c:otherwise><form:input path="${name}"/></c:otherwise>
             </c:choose>
             &nbsp;<span class="help-inline">${status.errorMessage}</span>
